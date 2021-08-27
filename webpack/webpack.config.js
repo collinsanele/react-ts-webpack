@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
 
 module.exports = {
   entry: path.resolve(__dirname, '..', './src/index.tsx'),
@@ -35,11 +36,17 @@ module.exports = {
     path: path.resolve(__dirname, '..', './build'),
     filename: 'bundle.js',
   },
-  mode: 'development',
+ 
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '..', './src/index.html'),
     }),
+
+    new webpack.DefinePlugin({
+      'process.env.name': JSON.stringify('Testing env in my dev'),
+      'process.env.url': JSON.stringify('Put urls you want in your .env here')
+    })
   ],
   stats: 'errors-only',
+  mode: 'development'
 }

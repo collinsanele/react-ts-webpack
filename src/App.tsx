@@ -8,4 +8,4 @@ export const App = ()=>{
         <p>{process.env.name}</p>
         <p>{process.env.url}</p>
     </>
-}
+} 
